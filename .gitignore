@@ -18,3 +18,4 @@ pom.xml.asc
 /lib/__pycache__
 script/.frajola_clojure.pid
 script/.frajola_python.pid
+script/frajola.zip

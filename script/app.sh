@@ -1,6 +1,13 @@
 #!/bin/bash
 set -e
 
+# =================================================================================================
+# Script para executar a aplicacao                                                         ========
+# ao subir a aplicacao eh gerado dois arquivos com o pid para controlar a execucao         ========
+# ./app.sh start - faz a execucao sobe o servico web e executa o script python lib/main.py ========
+# ./app.sh stop  - para os processos                                                       ========
+# =================================================================================================
+
 NAME=frajola
 JAR_PATH="../target/frajola-0.1.0-standalone.jar"
 PYTHON_APP_PATH="../lib/main.py"
