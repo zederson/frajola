@@ -2,12 +2,12 @@
   (:use [frajola.service :as service])
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
+            [ring.util.response :as resp]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
 
 (defroutes app-routes
-  (GET "/" [] "Hello World")
-  (GET "/take-picture" []
-       (service/take-picture))
+  (GET "/" [] (resp/redirect "/index.html"))
+  (GET "/take-picture" [] (service/take-picture))
   (route/not-found "Not Found"))
 
 (def app

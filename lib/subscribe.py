@@ -1,11 +1,12 @@
 #!/usr/bin/python
 
 import paho.mqtt.client as mqtt
+import os
 
-USER = 'fsbbzncn'
-PASS = 'Zf12-88wh85n'
-HOST = 'm10.cloudmqtt.com'
-PORT = 13832
+USER = os.environ['MQTT_USER']
+PASS = os.environ['MQTT_PASSWORD']
+HOST = os.environ['MQTT_HOST']
+PORT = int(os.environ['MQTT_PORT'])
 
 def on_message(mosq, obj, msg):
     Queue.distance = float(msg.payload.decode())

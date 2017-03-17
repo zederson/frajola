@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Ederson de Lima - Frajola</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center teal-text text-lighten-2">Ederson de Lima</h1>
+        <div class="row center">
+          <h5 class="header col s12 light"><b>Frajola</b> <br> Projeto para tirar fotos com camera DSLR e postar no twitter</h5>
+          <p>
+            Este projeto foi concebido para tirar fotos de passaros de forma inteligente e simples.
+          </p>
+        </div>
+        <div class="row center">
+          <a href="https://github.com/zederson/frajola" id="download-button" class="btn-large waves-effect waves-light blue lighten-1">Projeto</a>
+        </div>
+        <br><br>
+
+      </div>
+    </div>
+    <div class="parallax"><img src="images/background1.jpg" alt="Unsplashed background img 1"></div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">usb</i></h2>
+            <h5 class="center">Raspberry & GPIO</h5>
+
+            <p class="light">
+              Usando o Raspberry PI para executar o código responsável por medir a distância entre o objeto e chamar o programa que tira foto e enviar para o twitter.
+              <br>
+              Através do GPIO e um sensor ultrasonito, medimos a distância de um objeto e ao chegar em uma determinada distância, é disparado uma foto do objeto.
+            </p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">photo_camera</i></h2>
+            <h5 class="center">Tirar Foto</h5>
+
+            <p class="light">
+              Usando a biblioteca <a href="http://gphoto.org/proj/gphoto2/" target="_black">gphoto2</a> controlamos a câmera <b>DSLR</b>.
+              Que ao ser feita uma requisição na app, dispara a foto e faz o download da câmera.
+            </p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
+            <h5 class="center">Enviar para Twitter</h5>
+
+            <p class="light">
+              Através da biblioteca <a href="https://github.com/adamwynne/twitter-api" target="_blank">twitter-api</a> é feito um novo post no twitter.
+              <br>
+              Para fazer o post no twitter é preciso ter uma <i>app</i> criada no twitter.
+              <br>
+              Leia mais em <a href="https://dev.twitter.com" target="_black">twitter</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light">Aplicação que dispara foto e envia para twitter</h5>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="images/background2.jpg" alt="Unsplashed background img 2"></div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+
+      <div class="row">
+        <div class="col s12 center">
+          <h3><i class="mdi-content-send brown-text"></i></h3>
+          <h4>Clojure</h4>
+          <p class="left-align light">
+          Usando a biblioteca <i>org.gphoto/gphoto2-java</i> fazemos a comunicação com o <a href="http://gphoto.org/proj/gphoto2/" target="_black">gphoto2</a> que é responsável por tirar as fotos e fazer o download para o raspberry-pi.
+          <br>
+          Depois usamos <a href="https://github.com/adamwynne/twitter-api" target="_blank">twitter-api</a> para enviar a imagem para o <b>twitter</b>
+          <br>
+          As configurações das chaves e ookens de acesso é feito através de variáveis de ambientes, nas quais são destritas no README do projeto <a href="https://github.com/zederson/frajola" target="_blank">frajola</a>
+          <br>
+          Para realiar o disparo da foto é necessário chamar a url <i><b>http://localhost:3000/take-picture</b></i>.
+          A abordagem de fazer o disparo via url foi feita para dimunuir o tempo de load da aplicação e o disparo ser feito de forma rápida, além de proporcionar o disparo remoto.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light">Raspberry-pi medindo distância de objetos</h5>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="images/background3.jpg" alt="Unsplashed background img 3"></div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+
+      <div class="row">
+        <div class="col s12 center">
+          <h3><i class="mdi-content-send brown-text"></i></h3>
+          <h4>Raspberry-pi & Python</h4>
+          <p class="left-align light">
+          O raspberry-pi além de embarcar o nosso código usamos o recurso do <b>GPIO</b> para acoplar um sensor ultrasonico, que nos permite medir a distância de um objeto com uma precisão muito boa.
+          <br>
+          Usamos <i>python</i> para acessar as portas do <i>GPIO</i> e calcular a distância de um objeto. Um objeto ao atingir a distância determinada é feito a chamada da url que dispara a fotoe encaminhar para o twitter.
+          Os arquivos <i>python</i> estão na pasta <b>/lib</b> do projeto. no qual deve ser executado o <i>main.py</i>.
+          Caso a distancia queira ser alterada sem precisar acessar o raspberry, a mudança pode ser feita através do protocolo <b>MQTT</b>.
+          <br>
+          Para alterar é só passar o novo valor em centimentros para o tópico <b><i>frajola/distance</i></b>. Por default o valor é <b><i>40</b> centimetros</i>.
+          As configurações do mqtt também é feita através de variáveis de ambiente, descritas no <b>README</b> do projeto
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Ederson de Lima</h5>
+          <p class="grey-text text-lighten-4">
+            Este projeto foi concebido para tirar fotos de passaros de forma inteligente e simples.
+          </p>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Contato</h5>
+          <ul>
+            <li><a class="white-text" href="https://github.com/zederson">GitHub</a></li>
+            <li><a class="white-text" href="#!">edersondelima@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by Ederson de Lima
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="js/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.min.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+</html>
