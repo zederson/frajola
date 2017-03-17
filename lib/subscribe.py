@@ -9,6 +9,7 @@ HOST = os.environ['MQTT_HOST']
 PORT = int(os.environ['MQTT_PORT'])
 
 def on_message(mosq, obj, msg):
+    print("distancia alterada para", str(msg.payload.decode()))
     Queue.distance = float(msg.payload.decode())
 
 class Queue:

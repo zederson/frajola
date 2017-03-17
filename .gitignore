@@ -16,3 +16,5 @@ pom.xml.asc
 .DS_Store
 /logs/
 /lib/__pycache__
+script/.frajola_clojure.pid
+script/.frajola_python.pid
