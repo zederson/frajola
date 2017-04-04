@@ -1,14 +1,19 @@
 (ns frajola.handler
   (:use [frajola.service :as service])
-  (:require [compojure.core :refer :all]
+  (:require
+            [compojure.core :refer :all]
             [compojure.route :as route]
             [ring.util.response :as resp]
-            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
+            [ring.middleware.json :refer [wrap-json-response wrap-json-body]]))
 
 (defroutes app-routes
-  (GET "/" [] (resp/redirect "/index.html"))
-  (POST "/take-picture" [] (service/take-picture))
-  (route/not-found "Not Found"))
+  (GET "/" [] { :body {:message "Bem vindo ao frajola, consulte o html dentro do projeto em: resources/public/index.html"}})
+
+  (POST "/take-picture" { params :params } (service/take-picture))
+
+  (route/not-found "Frajola Not Found"))
 
 (def app
-  (wrap-defaults app-routes site-defaults))
+  (-> app-routes
+      wrap-json-response
+      wrap-json-body))

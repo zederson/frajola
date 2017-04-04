@@ -4,7 +4,7 @@
             [clojure.java.io :as io]))
 
 (def response
-  {:status 200 :headers {"Content-Type" "application/json"} :body "ok"})
+  {:status 201 :headers {"Content-Type" "application/json"} :body { :status :ok }})
 
 (defn delete
   [path]
