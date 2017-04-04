@@ -10,7 +10,7 @@ TRIG = 31
 
 def take_picture():
     conn = http.client.HTTPConnection("localhost", 3000)
-    conn.request("GET", "/take-picture")
+    conn.request("POST", "/take-picture")
     r1 = conn.getresponse()
     print(r1.status)
 

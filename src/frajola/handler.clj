@@ -7,7 +7,7 @@
 
 (defroutes app-routes
   (GET "/" [] (resp/redirect "/index.html"))
-  (GET "/take-picture" [] (service/take-picture))
+  (POST "/take-picture" [] (service/take-picture))
   (route/not-found "Not Found"))
 
 (def app
