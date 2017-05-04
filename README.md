@@ -5,7 +5,7 @@ Using raspberry-pi with distance sensor to shoot the camera
 ## Installation
 install libusb
 ```
-sudo apt-get install libsubs
+sudo apt-get install libusb
 ```
 
 install gphoto2
