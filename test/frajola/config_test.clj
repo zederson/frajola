@@ -4,7 +4,7 @@
 
 (deftest test-env
   (testing "when env does not exists"
-    (let [ environment (frajola_config/env "PATHi")]
+    (let [environment (frajola_config/env "PATH")]
       (is (nil? environment))))
 
   (testing "get env"

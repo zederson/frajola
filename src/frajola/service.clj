@@ -8,8 +8,8 @@
 
 (defn delete
   [path]
-    (io/delete-file path)
-    (println "deleted " path))
+  (if (.exists (io/as-file path))
+    (io/delete-file path)))
 
 (defn take-picture []
   (let [file (dslr/take-picture)]
