@@ -11,7 +11,7 @@
       (is (= (:body response)  "{\"message\":\"Bem vindo ao frajola, consulte o html dentro do projeto em: resources/public/index.html\"}"))))
 
   (testing "POST take-picture"
-    (with-redefs [frajola_service/take-picture (fn [] frajola_service/response)]
+    (with-redefs [frajola_service/take-picture (fn [] {:status 201 :headers {"Content-Type" "application/json"} :body { :status :ok }})]
       (let [response (app (mock/request :post "/take-picture"))]
         (is (= (:status response) 201))
         (is (= (:body response) "{\"status\":\"ok\"}"))

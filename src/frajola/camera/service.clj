@@ -4,10 +4,12 @@
            [org.gphoto2.CameraUtils]
            [org.gphoto2.Camera]))
 
+(def SUFFIX "_frajola.jpg")
+
 (defn- build-path
   []
-  (let [base-path (or (config/env "PICTURE_PATH") "/tmp/")]
-    (str base-path (System/currentTimeMillis) "_frajola.jpg")))
+  (let [base-path config/picture-path]
+    (str base-path (System/currentTimeMillis) SUFFIX)))
 
 (defn- save-file
   [path cam-file]

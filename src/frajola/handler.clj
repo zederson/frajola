@@ -11,6 +11,8 @@
 
   (POST "/take-picture" { params :params } (service/take-picture))
 
+  (GET "/pictures" [] (service/list-pictures))
+
   (route/not-found "Frajola Not Found"))
 
 (def app
