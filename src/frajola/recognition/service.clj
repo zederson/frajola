@@ -18,7 +18,7 @@
   (let [response (client/post url {:body (clojure.java.io/input-stream image-path)})]
     (json/read-str (:body response) :key-fn keyword)))
 
-(defn bird?
+(defn valid?
   [path-file]
   (let [body (post-image path-file)]
     (->> body
@@ -30,4 +30,4 @@
          (filter #(= (:class %) type-image))
          (filter #(> (:score %) score))
          empty?
-         not ) ))
+         not)))

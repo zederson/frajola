@@ -67,6 +67,11 @@ export MQTT_PORT=
 topic to change distance:
     frajola/distance
 
+environment to access ibm watson
+```
+export IBM_API_KEY=
+```
+
 ## Examples
 
    $ java -jar frajola-0.1.0-standalone.jar &
