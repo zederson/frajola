@@ -33,17 +33,28 @@ mqtt-client
 ```
 pip3 install paho-mqtt
 ```
+## Build
+
+```
+  $ lein ring uberjar
+```
 
 ## Usage
+Run
+```
+  $ lein ring server-headless
+```
+
 * take a picture and send to twitter
-
+```
    $ java -jar frajola-0.1.0-standalone.jar &
-
    $ curl -i http://localhost:3000/take-picture
+```
 
 * Use distance sensor to shoot a photo
-
+```
    $ python3 lib/main.py
+```
 
 ## Configs
 export environment variables to jar file
@@ -74,9 +85,10 @@ export IBM_API_KEY=
 
 ## Examples
 
+```
    $ java -jar frajola-0.1.0-standalone.jar &
-
    $ python3 lib/main.py
+```
 
 ### Bugs
 ...
