@@ -1,0 +1,12 @@
+Source: frajola
+Section: misc
+Priority: extra
+Maintainer:  Ederson de Lima<edersondelima@gmail.com>
+Build-Depends: openjdk-8-jdk, libcurl3
+Standards-Version: 0.1
+Homepage: https://github.com/zederson/frajola
+
+Package: frajola
+Architecture: any
+Depends: openjdk-8-jdk, libusb-1.0-0-dev, gphoto2, python3-pip, ${shlibs:Depends}
+Description: Take pictures with a DSLR camera with USB cable and send it to the tweeter

@@ -1,0 +1,91 @@
+#!/bin/bash
+
+NAME=frajola
+APP_PATH=/var/www/$NAME
+DESC=$NAME-service
+APP=frajola.jar
+SENSOR=lib/main.py
+FRAJOLA_JAVA_PID_FILE="$APP_PATH/.frajola_clojure.pid"
+FRAJOLA_PYTHON_PID_FILE="$APP_PATH/.frajola_python.pid"
+
+if [ -f /etc/default/$NAME ] ; then
+    source /etc/default/$NAME
+fi
+
+mkdir -p /var/run/$NAME
+chown -R frajola /var/run/$NAME
+
+set -e
+
+if [ -f /etc/default/$NAME ] ; then
+    source /etc/default/$NAME
+fi
+
+do_exec()
+{
+  cd $APP_PATH
+  # executa o JAR
+  java -jar $APP&
+  PID_TEMP=$!
+  echo "aplicacao Clojure gerou o processo $PID_TEMP"
+  echo $PID_TEMP > $FRAJOLA_JAVA_PID_FILE
+
+  # executa o script python
+  python3 $SENSOR&
+  PID_TEMP=$!
+  echo "aplicacao Python gerou o processo $PID_TEMP"
+  echo $PID_TEMP > $FRAJOLA_PYTHON_PID_FILE
+}
+
+do_stop()
+{
+  cd $APP_PATH/script
+  echo "Parando o $NAME"
+
+  if ([ -f $FRAJOLA_PYTHON_PID_FILE ])
+  then
+    PID_TEMP=$(cat $FRAJOLA_PYTHON_PID_FILE)
+    rm $FRAJOLA_PYTHON_PID_FILE
+    kill $PID_TEMP
+  fi
+
+  if ([ -f $FRAJOLA_JAVA_PID_FILE ])
+  then
+    PID_TEMP=$(cat $FRAJOLA_JAVA_PID_FILE)
+    rm $FRAJOLA_JAVA_PID_FILE
+    kill $PID_TEMP
+  fi
+  echo "$NAME parado"
+}
+
+case "$1" in
+  start)
+  echo -n "Starting $DESC:"
+  if do_exec
+  then
+    echo "$NAME started"
+  else
+    echo "failed"
+  fi
+  ;;
+  stop)
+  echo -n "Stopping $DESC: "
+  if do_stop
+  then
+    echo "$NAME stopped."
+  else
+    echo "failed!"
+  fi
+  ;;
+
+  restart)
+  ${0} stop
+  ${0} start
+  ;;
+  *)
+  echo "Usage: /etc/init.d/$NAME {start|stop|restart}" >&2
+  exit 1
+  ;;
+esac
+
+exit 0

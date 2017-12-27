@@ -90,8 +90,21 @@ export IBM_API_KEY=
    $ python3 lib/main.py
 ```
 
-### Bugs
-...
+## Debian
+
+Gerando pacote debian.
+* primeiro é necessário gerar o jar da aplicação
+* depois fazer um build da imagem do Docker
+* depois executar o container que deverá gerar um `.deb` na pasta `target`
+* uma vez enviado para o Raspberry Pi, é necessário fazer o `apt-get install ./frajola_0.1_amd64.deb`
+
+** Não esquecer de atualizar o arquivo `/etc/default/frajola` com as variáveis de ambiente
+
+```
+  $ lein ring uberjar
+  $ docker build -t frajola .
+  $ docker run --rm -v ${PWD}/target/:/data frajola
+```
 
 
 ## License
@@ -100,4 +113,5 @@ Copyright © 2017 Ederson de Lima
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
+
 
